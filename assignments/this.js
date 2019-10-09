@@ -4,7 +4,7 @@
 * 1. Window/Global: "this" refers to the entire window object
 * 2. Implicit: "this" refers to the object it exists in
 * 3. New: "this" refers to the object that is created and returned by the function
-* 4. 
+* 4. Explicit: "this" is defined directly a new object, and overrides the constructor
 *
 * write out a code example of each explanation above
 */
