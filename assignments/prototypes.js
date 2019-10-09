@@ -41,7 +41,47 @@
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
-/*
+function GameObject(ObjectProperties) {
+  this.createdAt = ObjectProperties.createdAt;
+  this.name = ObjectProperties.name;
+  this.dimensions = ObjectProperties.dimensions;
+}
+
+GameObject.prototype.destroy = function() {
+  return `${this.name} was removed from the game.`
+}
+
+
+
+
+function CharacterStats(StatsProperties) {
+  GameObject.call(this, StatsProperties);
+  this.healthPoints = StatsProperties.healthPoints;
+}
+
+CharacterStats.prototype = Object.create(GameObject.prototype);
+
+CharacterStats.prototype.takeDamage = function() {
+  return `${this.name} took damage.`
+}
+
+
+function Humanoid(humanoidProperties) {
+  GameObject.call(this, humanoidProperties);
+  CharacterStats.call(this, humanoidProperties);
+  this.team = humanoidProperties.team;
+  this.weapons = humanoidProperties.weapons;
+  this.language = humanoidProperties.language;
+}
+
+Humanoid.prototype = Object.create(CharacterStats.prototype);
+
+Humanoid.prototype.greet = function() {
+  return `${this.name} offers a greeting in ${this.language}.`
+}
+
+
+
   const mage = new Humanoid({
     createdAt: new Date(),
     dimensions: {
@@ -102,7 +142,7 @@
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
-*/
+
 
   // Stretch task: 
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
